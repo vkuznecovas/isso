@@ -36,7 +36,6 @@ require(["app/lib/ready", "app/config", "app/i18n", "app/api", "app/isso", "app/
             config["max-comments-nested"]).then(
             function(rv) {
                 if (rv.total_replies === 0) {
-                    $("#isso-thread > h4").textContent = i18n.translate("no-comments");
                     return;
                 }
 
@@ -49,7 +48,6 @@ require(["app/lib/ready", "app/config", "app/i18n", "app/api", "app/isso", "app/
                     }
                     count = count + comment.total_replies;
                 });
-                $("#isso-thread > h4").textContent = i18n.pluralize("num-comments", count);
 
                 if(rv.hidden_replies > 0) {
                     isso.insert_loader(rv, lastcreated);
