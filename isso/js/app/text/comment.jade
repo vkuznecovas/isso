@@ -8,9 +8,9 @@ div(class='isso-comment' id='isso-#{comment.id}')
                 a(class='author' href='#{comment.website}' rel='nofollow')
                     = bool(comment.author) ? comment.author : i18n('comment-anonymous')
             else
-                span(class='author')
-                    = bool(comment.author) ? comment.author : i18n('comment-anonymous')
-            span(class="spacer") &bull;
+                 a(class='permalink author' href='#isso-#{comment.id}')
+                    = bool(comment.author) ? ("By" + comment.author) : i18n('comment-anonymous')
+            span(class="spacer") &nbsp;
             a(class='permalink' href='#isso-#{comment.id}')
                 time(title='#{humanize(comment.created)}' datetime='#{datetime(comment.created)}')
             span(class='note')
