@@ -8,8 +8,6 @@ div(class='isso-comment' id='isso-#{comment.id}')
                 a(class='author' href='#{comment.website}' rel='nofollow')
                     = bool(comment.author) ? comment.author : i18n('comment-anonymous')
             else
-                span(class='author-by')
-                    = "By " 
                 span(class='permalink author')
                     = bool(comment.author) ? comment.author : i18n('comment-anonymous')
             span(class="spacer") &nbsp;
