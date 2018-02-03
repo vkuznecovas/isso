@@ -1,6 +1,11 @@
-FROM resin/qemux86-alpine-node
-RUN npm i -g bower requirejs uglify-js jade
+FROM multiarch/alpine:amd64-latest-stable
+ARG ARCH=amd64
 
+RUN echo "I'm ${ARCH}"
+ENV CONFIG_FLAGS="--fully-static --without-npm" DEL_PKGS="libstdc++" RM_DIRS=/usr/include
+
+RUN apk add --update nodejs nodejs-npm
+RUN npm i -g bower 
 # Install needed packages. Notes:
 #   * dumb-init: a proper init system for containers, to reap zombie children
 #   * musl: standard C library
@@ -58,4 +63,4 @@ WORKDIR /usr/local/isso
 RUN make init && make js
 RUN python setup.py install && chmod +x /usr/local/isso/run.sh
 EXPOSE 8080
-CMD ["isso -c ./isso.conf run"]
+CMD ["./run.sh"]

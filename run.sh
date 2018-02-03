@@ -1,3 +1,2 @@
-#!/bin/sh
-chown -R $UID:$GID /db /config
-exec su-exec $UID:$GID /sbin/tini -- isso -c /config/isso.conf run
+#!/usr/bin/env bash
+isso -c ./isso.conf run 
