@@ -119,3 +119,8 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+
+isso.conf
+task-definition.json
+comments.db
